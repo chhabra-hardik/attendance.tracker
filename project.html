@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Tracker</title>
+  <link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-box">
+      <div class="logo-icon">📋</div>
+      <h1>Attendance</h1>
+    </div>
+    <div class="header-menu">⋮</div>
+  </div>
+
+  <!-- OVERALL CARD -->
+  <div class="overall-card">
+    <div class="overall-left">
+      <p class="overall-label">Overall Attendance</p>
+      <div class="big-percent" id="overallPercent">0%</div>
+      <div class="standing">
+        <span>●</span><span id="standingText">Good Standing</span>
+      </div>
+    </div>
+
+    <div class="overall-stats">
+      <div class="stat-box">
+        <div class="stat-icon green">✔</div>
+        <div class="stat-info">
+          <p>Attended</p>
+          <h3 id="totalAttended">0</h3>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="stat-box">
+        <div class="stat-icon orange">📅</div>
+        <div class="stat-info">
+          <p>Total</p>
+          <h3 id="totalClasses">0</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUBJECTS SECTION -->
+  <div class="subject-title">
+    <h2>Subjects</h2>
+    <button class="filter-btn">All ▾</button>
+  </div>
+
+  <div class="container">
+    <div id="subjectContainer"></div>
+  </div>
+
+  <!-- FLOATING ADD BUTTON -->
+  <button class="floating-btn" onclick="openModal()">+</button>
+
+  <!-- ADD MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <div class="drag-line"></div>
+      <div class="modal-header">
+        <h2>Add Subject</h2>
+        <button class="close-btn" onclick="closeModal()">✕</button>
+      </div>
+
+      <label class="input-label">Subject Name</label>
+      <input type="text" id="subjectName" placeholder="e.g. Data Structures">
+
+      <div class="two-col">
+        <div>
+          <label class="input-label">Attended Classes</label>
+          <div class="modal-counter">
+            <button class="mc-btn minus-green" onclick="modalDecrease('attended')">−</button>
+            <input type="number" id="attended" value="0" min="0">
+            <button class="mc-btn plus-green" onclick="modalIncrease('attended')">+</button>
+          </div>
+        </div>
+        <div>
+          <label class="input-label">Total Classes</label>
+          <div class="modal-counter">
+            <button class="mc-btn minus-orange" onclick="modalDecrease('total')">−</button>
+            <input type="number" id="total" value="0" min="0">
+            <button class="mc-btn plus-orange" onclick="modalIncrease('total')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="save-btn" onclick="saveSubject()">Save Changes</button>
+    </div>
+  </div>
+
+  <!-- EDIT MODAL -->
+  <div class="modal" id="editModal">
+    <div class="modal-content">
+      <div class="drag-line"></div>
+      <div class="modal-header">
+        <h2>Edit Subject</h2>
+        <button class="close-btn" onclick="closeEditModal()">✕</button>
+      </div>
+
+      <label class="input-label">Subject Name</label>
+      <input type="text" id="editSubjectName" placeholder="Subject Name">
+
+      <div class="two-col">
+        <div>
+          <label class="input-label">Attended Classes</label>
+          <div class="modal-counter">
+            <button class="mc-btn minus-green" onclick="editModalDecrease('editAttended')">−</button>
+            <input type="number" id="editAttended" value="0" min="0">
+            <button class="mc-btn plus-green" onclick="editModalIncrease('editAttended')">+</button>
+          </div>
+        </div>
+        <div>
+          <label class="input-label">Total Classes</label>
+          <div class="modal-counter">
+            <button class="mc-btn minus-orange" onclick="editModalDecrease('editTotal')">−</button>
+            <input type="number" id="editTotal" value="0" min="0">
+            <button class="mc-btn plus-orange" onclick="editModalIncrease('editTotal')">+</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="save-btn" onclick="saveEditedSubject()">Save Changes</button>
+      <button class="delete-btn" onclick="confirmDeleteSubject()">Delete Subject</button>
+    </div>
+  </div>
+
+  <script src="project.js"></script>
+</body>
+</html>
