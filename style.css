@@ -689,6 +689,8 @@ background-clip:text;
   overflow:hidden;
 
   background:#1c1c1c;
+
+  width:100%;
 }
 
 .mc-btn{
@@ -794,7 +796,15 @@ background-clip:text;
     align-items:flex-start;
   }
 
-  .two-col{
-    grid-template-columns:1fr;
-  }
+.two-col{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
+  gap:16px;
+
+  margin-bottom:24px;
+}
 }
