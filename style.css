@@ -703,11 +703,13 @@ background-clip:text;
   font-size:24px;
 
   cursor:pointer;
+  flex-shrink: 0; /* Prevents button compression */
 }
 
 .modal-counter input{
 
   flex:1;
+  width: 0; /* Forces input layout to dynamically measure room inside the flex container */
 
   background:none;
   border:none;
